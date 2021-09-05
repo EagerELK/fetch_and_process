@@ -1,0 +1,11 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-thread_safety
+
+Style/StringLiteralsInInterpolation:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Layout/LineLength:
+  Max: 120
