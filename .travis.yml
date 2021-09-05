@@ -6,7 +6,6 @@ rvm:
   - 3.0.0
   - 2.7
   - 2.6
-gemfile: Gemfile.ci
 before_install:
   - gem install bundler -v 2.2.3
 deploy:
