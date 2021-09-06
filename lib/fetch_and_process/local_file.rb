@@ -10,7 +10,7 @@ module FetchAndProcess
     end
 
     def file_handler
-      from = uri.to_s.sub(/^file:\/\//, '')
+      from = uri.to_s.sub(%r{^file://}, '')
       from = "./#{from}" if from[0] != '/'
       FileUtils.cp from, cache_location
       cache_location

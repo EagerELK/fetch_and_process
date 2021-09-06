@@ -37,9 +37,9 @@ module FetchAndProcess
 
     def cache_location
       @cache_location ||= begin
-        hash = Digest::MD5.hexdigest "#{uri}"
+        hash = Digest::MD5.hexdigest uri.to_s
         path = "#{Dir.tmpdir}/fetch_and_process"
-        Dir.mkdir(path, 0700) unless File.exists?(path)
+        Dir.mkdir(path, 0o700) unless File.exist?(path)
         "#{path}/#{hash}"
       end
     end

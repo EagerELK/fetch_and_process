@@ -17,7 +17,7 @@ module FetchAndProcess
     def http_handler
       Net::HTTP.start(uri.host, uri.port, use_ssl: uri.port == 443) do |http|
         req = Net::HTTP::Get.new(uri)
-        req['If-Modified-Since'] = File.mtime(cache_location).rfc2822 if File.exists?(cache_location)
+        req['If-Modified-Since'] = File.mtime(cache_location).rfc2822 if File.exist?(cache_location)
         req['User-Agent'] = user_agent
         http.request(req) do |response|
           case response
@@ -35,10 +35,10 @@ module FetchAndProcess
         end
         cache_location
       end
-    rescue StandardError => error
+    rescue StandardError => e
       # Ensure there's no empty / partial file to foul up the cache
-      FileUtils.rm cache_location if File.exists?(cache_location)
-      raise error
+      FileUtils.rm cache_location if File.exist?(cache_location)
+      raise e
     end
   end
 end
