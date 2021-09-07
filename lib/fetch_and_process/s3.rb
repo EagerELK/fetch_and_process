@@ -12,7 +12,7 @@ module FetchAndProcess
       # TODO: Get the bucket and key from the URI
       options = {
         bucket: uri.host,
-        key: uri.path[1..-1]
+        key: uri.path[1..],
       }
       options[:if_modified_since] = File.mtime(cache_location) if File.exist?(cache_location)
       s3.get_object(options, target: cache_location)

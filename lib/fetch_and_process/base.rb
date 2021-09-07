@@ -46,7 +46,7 @@ module FetchAndProcess
 
     class << self
       def handle?(uri)
-        handlers.keys.include? uri.scheme.to_sym
+        handlers.key? uri.scheme.to_sym
       end
 
       def handler(uri)
