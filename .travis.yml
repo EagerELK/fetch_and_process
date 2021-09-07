@@ -1,13 +1,15 @@
----
 sudo: false
-language: ruby
 cache: bundler
+language: ruby
 rvm:
   - 3.0.0
   - 2.7
   - 2.6
 before_install:
-  - gem install bundler -v 2.2.3
+  - gem update --remote bundler
+script:
+  # - bundle exec rake
+  - bundle exec rubocop --format simple --display-only-fail-level-offenses --fail-level W lib
 deploy:
   provider: rubygems
   api_key:
