@@ -56,10 +56,10 @@ module FetchAndProcess
       def add_handler(scheme, method)
         handlers[scheme.to_sym] = method.to_sym
       end
+    end
 
-      def handlers
-        @handlers ||= {}
-      end
+    def self.handlers
+      @handlers ||= {}
     end
   end
 end
